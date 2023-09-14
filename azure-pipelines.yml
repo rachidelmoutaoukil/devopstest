@@ -1,4 +1,14 @@
 # Starter pipeline
+- task: UiPathPack@4
+  inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: 'project.json'
+    orchestratorConnection: 'orchestrator'
+    outputPath: '- task: UiPathDeploy@4
+  inputs:
+    orchestratorConnection: 'orchestrator'
+    packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
+    folderName: 'Shared''
 - task: UiPathPack@3
   inputs:
     versionType: 'AutoVersion'
