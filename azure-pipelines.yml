@@ -22,11 +22,10 @@ pool:
 
 steps:
 
-# Install files needed for packaging/deploying. If you're using an build machine with UiPath already installed, you can remove this line.
-- task: UiPathInstallPlatform-preview@2
+# Install files needed for packaging/deploying. If you're using an build machine with UiPath already installed, you can remove this line.- task: UiPathInstallPlatform-preview@2
 
 # Package the project.
-- task: UiPathPack@2
+- task: UiPathPack@3
   inputs:
     # You might want to change the versionType logic.
     versionType: 'AutoVersion'
@@ -35,7 +34,7 @@ steps:
     orchestratorConnection: Azureconnexion
     outputPath: '$(Build.ArtifactStagingDirectory)\Output'
 
-- task: UiPathDeploy@2
+- task: UiPathDeploy@4
   condition: and(succeeded(), startsWith(variables['Build.SourceBranchName'], 'release'))
   inputs:
     # This should match the name of the Orchestrator you are deploying to, which is defined in 'Service Connections' in Azure.
@@ -43,7 +42,7 @@ steps:
     packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
     folderName: 'Shared'
     
-- task: UiPathDeploy@2
+- task: UiPathDeploy@3
   condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'master'))
   inputs:
     # This should match the name of the Orchestrator you are deploying to, which is defined in 'Service Connections' in Azure.
