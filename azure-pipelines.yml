@@ -9,7 +9,7 @@
     traceLevel: 'Information'
 
 
-trigger:
+-trigger:
 - main
 steps:
 - script: echo Hello, world!
