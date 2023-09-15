@@ -1,52 +1,8 @@
 # Starter pipeline
-- task: UiPathPack@4
-  inputs:
-    versionType: 'AutoVersion'
-    projectJsonPath: 'project.json'
-    orchestratorConnection: 'Azureconnexion'
-    outputPath: '- task: UiPathDeploy@4
-  inputs:
-    orchestratorConnection: 'Azureconnexion'
-    packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
-    folderName: 'Shared''
-    
-- task: UiPathPack@3
-  inputs:
-    versionType: 'AutoVersion'
-    projectJsonPath: 'project.json'
-    outputType: 'Process'
-    outputPath: '- task: UiPathDeploy@3
-  inputs:
-    packagesPath: '- task: UiPathDeploy@4
-  inputs:
-    orchestratorConnection: 'orchestrator'
-    packagesPath: '- task: UiPathDeploy@4
-  inputs:
-    orchestratorConnection: 'Azureconnexion'
-    packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
-    folderName: 'Shared''
-    folderName: 'Shared''
-    folderName: 'Shared''
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+
 
 trigger:
 - main
-- task: UiPathDeploy@3
-  inputs:
-    packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
-    folderName: 'Shared'
-pool:
-  vmImage: windows 11
-- task: UiPathPack@4
-  inputs:
-    versionType: 'AutoVersion'
-    projectJsonPath: 'project.json'
-    outputType: 'Process'
-    orchestratorConnection: 'orchestrator'
-    outputPath: '$(Build.ArtifactStagingDirectory)\Output'
-
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
