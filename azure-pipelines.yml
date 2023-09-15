@@ -50,3 +50,6 @@ steps:
     orchestratorConnection: Azureconnexion
     packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
     folderName: 'Shared'
+- task: UiPathInstallPlatform@4
+  inputs:
+    cliVersion: 'WIN_23.6.8581.19168'
