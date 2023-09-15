@@ -1,4 +1,12 @@
 # Starter pipeline
+- task: UiPathPack@4
+  inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: 'project.json'
+    outputType: 'Process'
+    orchestratorConnection: 'Azureconnexion'
+    outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+    traceLevel: 'Information'
 
 
 trigger:
